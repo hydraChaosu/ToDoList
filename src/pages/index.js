@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import TodoItem from "../components/TodoItem"
 
 class ToDoList extends React.Component {
   state = {
@@ -36,11 +37,15 @@ class ToDoList extends React.Component {
   render() {
     const ToDoList = this.state.list.map(item => {
       return (
-        <li key={item.id}>
-          <p>{item.content}</p>
-          <button>{item.completed ? "Uncomplete" : "Complete"}</button>
-          <button onClick={() => this.handleRemove(item.id)}>Remove</button>
-        </li>
+        <TodoItem
+          id={item.id}
+          key={item.id}
+          content={item.content}
+          completed={item.completed}
+          complete={this.handleComplete}
+          // remove={() => this.handleRemove(item.id)} bez wysylania id
+          remove={this.handleRemove}
+        />
       )
     })
     return (
