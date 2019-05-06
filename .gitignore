@@ -69,4 +69,4 @@ yarn-error.log
 .yarn-integrity
 
 #modules
-node_modules
+/node_modules
