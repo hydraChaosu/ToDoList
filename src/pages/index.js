@@ -1,21 +1,55 @@
 import React from "react"
-import { Link } from "gatsby"
+import styled from "styled-components"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+class ToDoList extends React.Component {
+  state = {
+    list: [
+      {
+        id: 0,
+        content: "Eat rabarbar",
+        completed: false,
+      },
+      {
+        id: 1,
+        content: "Eat potato",
+        completed: false,
+      },
+    ],
+  }
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+  handleRemove = id => {
+    const list = [...this.state.list].filter(item => item.id !== id)
+    this.setState({
+      list,
+    })
+  }
 
-export default IndexPage
+  handleComplete = id => {
+    const list = [...this.state.list].filter(item => {
+      if (item.id !== id) return (item.completed = !item.completed)
+    })
+    this.setState({
+      list,
+    })
+  }
+
+  render() {
+    const ToDoList = this.state.list.map(item => {
+      return (
+        <li key={item.id}>
+          <p>{item.content}</p>
+          <button>{item.completed ? "Uncomplete" : "Complete"}</button>
+          <button onClick={() => this.handleRemove(item.id)}>Remove</button>
+        </li>
+      )
+    })
+    return (
+      <>
+        <h1>hahaha</h1>
+        <ul>{ToDoList}</ul>
+      </>
+    )
+  }
+}
+
+export default ToDoList
