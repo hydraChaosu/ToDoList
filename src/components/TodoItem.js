@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 
-const TodoItem = ({ content, completed, complete, remove, key, id }) => {
+const TodoItem = ({ content, completed, complete, remove, id }) => {
   return (
-    <li key={key}>
+    <li>
       <p>{content}</p>
-      <button>{completed ? "Uncomplete" : "Complete"}</button>
-      {/* <button onClick={remove}>Remove</button>  1 bez wysylania id  */}
+      <button onClick={() => complete(id)}>
+        {completed ? "Uncomplete" : "Complete"}
+      </button>
       <button onClick={() => remove(id)}>Remove</button>
     </li>
   )

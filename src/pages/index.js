@@ -1,8 +1,10 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
 import TodoItem from "../components/TodoItem"
+import ToDoLists from "../components/TodoLists"
+import TodoAdd from "../components/TodoAdd"
 
-class ToDoList extends React.Component {
+class ToDo extends React.Component {
   state = {
     list: [
       {
@@ -15,6 +17,21 @@ class ToDoList extends React.Component {
         content: "Eat potato",
         completed: false,
       },
+      {
+        id: 2,
+        content: "Eat rice",
+        completed: true,
+      },
+      {
+        id: 3,
+        content: "Eat meat",
+        completed: false,
+      },
+      {
+        id: 4,
+        content: "Eat cat and dog",
+        completed: true,
+      },
     ],
   }
 
@@ -26,8 +43,12 @@ class ToDoList extends React.Component {
   }
 
   handleComplete = id => {
-    const list = [...this.state.list].filter(item => {
-      if (item.id !== id) return (item.completed = !item.completed)
+    console.log(id, "handlecompl")
+    const list = [...this.state.list].map(item => {
+      if (item.id === id) {
+        item.completed = !item.completed
+      }
+      return item
     })
     this.setState({
       list,
@@ -35,26 +56,17 @@ class ToDoList extends React.Component {
   }
 
   render() {
-    const ToDoList = this.state.list.map(item => {
-      return (
-        <TodoItem
-          id={item.id}
-          key={item.id}
-          content={item.content}
-          completed={item.completed}
-          complete={this.handleComplete}
-          // remove={() => this.handleRemove(item.id)} bez wysylania id
-          remove={this.handleRemove}
-        />
-      )
-    })
     return (
       <>
-        <h1>hahaha</h1>
-        <ul>{ToDoList}</ul>
+        <TodoAdd />
+        <ToDoLists
+          todos={this.state.list}
+          complete={this.handleComplete}
+          remove={this.handleRemove}
+        />
       </>
     )
   }
 }
 
-export default ToDoList
+export default ToDo
