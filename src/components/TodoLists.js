@@ -34,9 +34,21 @@ const TodoLists = ({ todos, complete, remove }) => {
 
   return (
     <>
-      <p>Uncompleted tasks</p>
+      <p>
+        {unComplTodos.length > 1
+          ? "Uncompleted tasks"
+          : unComplTodos.length === 0
+          ? false
+          : "Uncompleted task"}
+      </p>
       {unComplTodos}
-      <p>Completed tasks</p>
+      <p>
+        {ComplTodos.length > 1
+          ? "Completed tasks"
+          : ComplTodos.length === 0
+          ? false
+          : "Completed task"}
+      </p>
       {ComplTodos}
     </>
   )

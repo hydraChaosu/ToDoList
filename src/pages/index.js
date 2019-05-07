@@ -1,5 +1,6 @@
 import React from "react"
 import styled, { createGlobalStyle } from "styled-components"
+import PropTypes from "prop-types"
 // import TodoItem from "../components/TodoItem"
 import ToDoLists from "../components/TodoLists"
 import TodoAdd from "../components/TodoAdd"
@@ -81,6 +82,10 @@ class ToDo extends React.Component {
       </>
     )
   }
+}
+
+ToDo.propTypes = {
+  list: PropTypes.array,
 }
 
 export default ToDo
