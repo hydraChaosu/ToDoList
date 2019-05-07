@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { createGlobalStyle } from "styled-components"
-import TodoItem from "../components/TodoItem"
+// import TodoItem from "../components/TodoItem"
 import ToDoLists from "../components/TodoLists"
 import TodoAdd from "../components/TodoAdd"
 
@@ -55,10 +55,24 @@ class ToDo extends React.Component {
     })
   }
 
+  handleAdd = text => {
+    const item = {
+      id: this.state.list.length,
+      content: text,
+      completed: false,
+    }
+    console.log(this.state.list)
+    const list = [...this.state.list, item]
+    console.log(list)
+    this.setState({
+      list,
+    })
+  }
+
   render() {
     return (
       <>
-        <TodoAdd />
+        <TodoAdd addTodo={this.handleAdd} />
         <ToDoLists
           todos={this.state.list}
           complete={this.handleComplete}
