@@ -5,6 +5,42 @@ import PropTypes from "prop-types"
 import ToDoLists from "../components/TodoLists"
 import TodoAdd from "../components/TodoAdd"
 
+const GlobalStyle = createGlobalStyle`
+* {
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;
+}
+// body {
+  // min-height: 100vh;
+  // background: blue;
+// }
+`
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: red;
+  min-height: 100vh;
+`
+
+const StyledTodoAdd = styled(TodoAdd)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  padding-bottom: 10px;
+  background: #5cb1f8;
+  font-family: "Roboto", serif;
+  @media (min-width: 768px) {
+    width: 70%;
+    padding: 0;
+  }
+`
+
 class ToDo extends React.Component {
   state = {
     list: [
@@ -44,7 +80,6 @@ class ToDo extends React.Component {
   }
 
   handleComplete = id => {
-    console.log(id, "handlecompl")
     const list = [...this.state.list].map(item => {
       if (item.id === id) {
         item.completed = !item.completed
@@ -73,12 +108,15 @@ class ToDo extends React.Component {
   render() {
     return (
       <>
-        <TodoAdd addTodo={this.handleAdd} />
-        <ToDoLists
-          todos={this.state.list}
-          complete={this.handleComplete}
-          remove={this.handleRemove}
-        />
+        <GlobalStyle />
+        <Wrapper>
+          <StyledTodoAdd addTodo={this.handleAdd} />
+          <ToDoLists
+            todos={this.state.list}
+            complete={this.handleComplete}
+            remove={this.handleRemove}
+          />
+        </Wrapper>
       </>
     )
   }

@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ToDo/> renders without crashing 1`] = `
+Array [
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <button>
+      Add Todo
+    </button>
+  </form>,
+  <p>
+    Uncompleted tasks
+  </p>,
+  <li>
+    <p>
+      Eat rabarbar
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Complete
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Remove
+    </button>
+  </li>,
+  <li>
+    <p>
+      Eat potato
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Complete
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Remove
+    </button>
+  </li>,
+  <li>
+    <p>
+      Eat meat
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Complete
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Remove
+    </button>
+  </li>,
+  <p>
+    Completed tasks
+  </p>,
+  <li>
+    <p>
+      Eat rice
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Uncomplete
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Remove
+    </button>
+  </li>,
+  <li>
+    <p>
+      Eat cat and dog
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Uncomplete
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Remove
+    </button>
+  </li>,
+]
+`;
+
+exports[`<TodoItem/> renders without crashing 1`] = `ShallowWrapper {}`;
