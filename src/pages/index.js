@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: red;
+  background: #5cb1f8;
   min-height: 100vh;
 `
 
@@ -31,13 +31,15 @@ const StyledTodoAdd = styled(TodoAdd)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 20vh;
-  padding-bottom: 10px;
+  height: 25vh;
   background: #5cb1f8;
   font-family: "Roboto", serif;
   @media (min-width: 768px) {
+    height: 20vh;
     width: 70%;
-    padding: 0;
+  }
+  @media (orientation: landscape) {
+    height: 50vh;
   }
 `
 
@@ -98,7 +100,7 @@ class ToDo extends React.Component {
       completed: false,
     }
     console.log(this.state.list)
-    const list = [...this.state.list, item]
+    const list = [item, ...this.state.list]
     console.log(list)
     this.setState({
       list,

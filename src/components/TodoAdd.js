@@ -1,27 +1,51 @@
 import React, { useState } from "react"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
+
+const BlinkInput = keyframes`
+0% {
+opacity: 1
+}
+100% {
+opacity: 0
+}
+`
 
 const Button = styled.button`
-  padding: 10px 10px;
   min-width: 150px;
+  padding: 10px 0px;
   margin: 5px auto;
   transition: 0.3s all;
+  border: white 3px solid;
+  border-radius: 10px;
+  background: #5cb1f8;
+  font-family: "Roboto", serif;
+  font-size: 20px;
+  color: white;
   :hover {
-    box-shadow: 0 0 10px yellow;
+    background: white;
+    color: #5cb1f8;
   }
 `
 const Input = styled.input`
-  width: 50%;
+  width: 74%;
   margin: 20px 0px 10px 0;
   font-size: 32px;
   color: white;
   background: transparent;
   border: none;
   border-bottom: white solid 2px;
+  :focus {
+    color: black;
+    animation: ${BlinkInput} 0.8s linear 1;
+  }
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `
 const Error = styled.p`
+  margin-bottom: 10px;
   text-align: center;
-  padding: 10px 0;
+  color: red;
 `
 
 const TodoAdd = ({ addTodo, className }) => {
@@ -46,7 +70,7 @@ const TodoAdd = ({ addTodo, className }) => {
     <form onSubmit={handleSubmit} className={className}>
       <Input type="text" value={text} onChange={handleChange} />
       <Button>Add Todo</Button>
-      {showEmptyError && <Error>You need write something </Error>}
+      {showEmptyError && <Error>You need to write something </Error>}
     </form>
   )
 }

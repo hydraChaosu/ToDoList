@@ -1,18 +1,40 @@
 import React from "react"
 import TodoItem from "./TodoItem"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 const Lists = styled.div`
   flex-grow: 1;
-  background: pink;
+  display: flex;
+  flex-direction: column;
+  background: #5cb1f8;
+  color: white;
+  font-family: "Roboto", serif;
+
   @media (min-width: 768px) {
     width: 70%;
   }
 `
 
+const List = styled.div`
+  background: #5cb1f8;
+  color: white;
+`
+
 const ListName = styled.p`
+  font-size: 20px;
+  background: #5cb1f8;
   margin: 10px 0;
   text-align: center;
+  ${props =>
+    props.com &&
+    css`
+      color: green;
+    `}
+  ${props =>
+    props.uncom &&
+    css`
+      color: red;
+    `}
 `
 
 const TodoLists = ({ todos, complete, remove }) => {
@@ -47,22 +69,22 @@ const TodoLists = ({ todos, complete, remove }) => {
 
   return (
     <Lists>
-      <ListName>
+      <ListName uncom>
         {unComplTodos.length > 1
           ? "Uncompleted tasks"
           : unComplTodos.length === 0
           ? false
           : "Uncompleted task"}
       </ListName>
-      {unComplTodos}
-      <ListName>
+      <List uncom> {unComplTodos}</List>
+      <ListName com>
         {ComplTodos.length > 1
           ? "Completed tasks"
           : ComplTodos.length === 0
           ? false
           : "Completed task"}
       </ListName>
-      {ComplTodos}
+      <List com>{ComplTodos}</List>
     </Lists>
   )
 }
