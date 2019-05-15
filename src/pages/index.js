@@ -34,12 +34,12 @@ const StyledTodoAdd = styled(TodoAdd)`
   height: 25vh;
   background: #5cb1f8;
   font-family: "Roboto", serif;
+  @media (orientation: landscape) {
+    height: 50vh;
+  }
   @media (min-width: 768px) {
     height: 20vh;
     width: 70%;
-  }
-  @media (orientation: landscape) {
-    height: 50vh;
   }
 `
 
